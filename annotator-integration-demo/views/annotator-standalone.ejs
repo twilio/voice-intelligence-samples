@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Apollo Corp – Agent Desktop</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/annotate.css">
+</head>
+<body>
+    <% if (locals.errorMessage) { %>
+    <div class="error-message"><%= errorMessage %></div>
+    <% } %>
+    <div class="container grid-x">
+        <div class="side-menu cell medium-1 large-1">
+            <ul class="vertical menu">
+                <img class="logo" src="/img/logo.png">
+                <li><a href="#">Tasks <span class="badge alert"><%= locals.recordings.length %></span></a></li>
+                <li><a href="#">Chat</a></li>
+                <li><a href="#">Timesheet</a></li>
+                <li><a href="#">Notes</a></li>
+            </ul>
+        </div>
+
+        <div class="cell medium-11 large-11">
+            <div class="task-header"><strong>Tasks</strong></div>
+            <ul class="task-list no-bullet">
+                <% locals.recordings.forEach((r, idx) => { %>
+                <li class="<%= r.active ? 'task-item-selected' : '' %>">
+                        <a class="task-name"
+                        target="_blank"
+                        href="/annotator/standalone?view=<%= r.call_sid %>"
+                        >
+                            Annotation Task <%= idx + 1 %><br/>
+                            <small><%= r.date_created %></small>
+                        </a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
