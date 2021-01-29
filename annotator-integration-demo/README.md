@@ -2,7 +2,7 @@
 
 This repository is a companion project to the Twilio AI Annotator Integration Guide.  
 
-![Annotator Integration Demo Screenshot](/public/img/screenshot.png)
+![Annotator Integration Demo Screenshot](/annotator-integration-demo/public/img/screenshot.png)
 
 It scaffolds two basic types of integration:
 1. **Embedded Annotator**: This demonstrates how you might embed the annotator into your webapp via iframe.
