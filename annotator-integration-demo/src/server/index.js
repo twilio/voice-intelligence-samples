@@ -32,7 +32,7 @@ app.get('/annotator/embedded', async (req, res) => {
         if (transcript.status === 'completed') {
             db.markInProgress(transcript.call_sid);
 
-            const token = await client.getToken(transcript.sid, userId);
+            const token = await client.getToken(transcript.sid, userId, true);
             const iframeUrl = `${annotatorAssetUrl}?token=${token}`;
 
             templateVars.iframeUrl = iframeUrl;
@@ -67,7 +67,7 @@ app.get('/annotator/standalone', async (req, res) => {
         if (transcript.status === 'completed') {
             db.markInProgress(callSid);
 
-            const token = await client.getToken(transcript.sid, userId);
+            const token = await client.getToken(transcript.sid, userId, true);
             const url = `${annotatorAssetUrl}?token=${token}`;
             return res.redirect(url);
         } else {

@@ -6,7 +6,7 @@ const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioEncodedCreds = Buffer.from(`${twilioAccountSid}:${twilioAuthToken}`).toString('base64');
 
 module.exports = {
-    getToken: async (transcriptSid, userId) => {
+    getToken: async (transcriptSid, userId, isDownloadButtonVisible) => {
         const rsp = await fetch(
             'https://ai.twilio.com/v1/Tokens',
             {
@@ -22,7 +22,8 @@ module.exports = {
                             service_sid: eipServiceSid,
                             transcript_sid: transcriptSid,
                             metadata: {
-                                userId
+                                userId,
+                                isDownloadButtonVisible
                             }
                         }]
                     }
