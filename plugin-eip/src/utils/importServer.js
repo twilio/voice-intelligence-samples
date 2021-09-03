@@ -91,10 +91,29 @@ class ImportServer {
     return;
   }
 
+  async getRandomProfileImageUrl() {
+    // Gets a randomly generated profile image
+    let image_url = await got.get('https://randomuser.me/api')['result'][0]['picture']['thumbnail'];
+    return image_url;
+  }
+
   async createTranscript(path){
+    let agent_names = ['Al', 'Alfredo', 'Luke', 'Jeroen', 'Umair', 'Tyler', 'Sahil', 'Matt', 'Osman', 'Serena'];
+    let customer_names = ['Mike', 'Jim', 'James', 'Annie', 'Matt', 'Dwight', 'Pam', 'Michael', 'Kelly'];
     let request = {
       form: {
-        MediaUrl: path
+        MediaUrl: path,
+        Participants: [{
+          channel: 1,
+          type: 'customer',
+          full_name: customer_names[Math.floor(Math.random() * customer_names.length)],
+          image_url: this.getRandomProfileImageUrl()
+        }, {
+          channel: 2,
+          type: 'agent',
+          full_name: agent_names[Math.floor(Math.random() * agent_namess.length)],
+          image_url: this.getRandomProfileImageUrl()
+        }]
       }, username: this.username,
       password: this.password,
       responseType: 'json'
