@@ -21,7 +21,7 @@ This project uses the `dotenv` library to load environment variables. It expects
 ### Step 2: Install and Start
 ```bash
 # Clone the repository
-git clone https://github.com/jtgi/annotator-integration-demo
+git clone https://github.com/twilio/eip-samples.git
 
 # Go inside the directory
 cd annotator-integration-demo
@@ -54,8 +54,8 @@ This demo illustrates the 3 key actions required to initialize the Annotator:
 
 ### Annotator Standalone
 
-The high level sequence of operations for redirecting a to the standalone editor:  
-1. Authenticate the agent per you authentication system.
+The high level sequence of operations for redirecting to the standalone editor:  
+1. Authenticate the agent per your authentication system.
 2. Convert the call sid passed to a transcript sid
 3. Ensure the transcription has been `completed`
 4. Mark the Transcript as being annotated.

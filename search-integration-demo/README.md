@@ -21,7 +21,7 @@ This project uses the `dotenv` library to load environment variables. It expects
 ### Step 2: Install and Start
 ```bash
 # Clone the repository
-git clone https://github.com/epardosanllorente/search-integration-demo
+git clone https://github.com/twilio/eip-samples.git
 
 # Go inside the directory
 cd search-integration-demo
@@ -65,7 +65,7 @@ This demo illustrates the 3 key actions required to initialize the Search:
 
 ### Search Standalone
 
-The high level sequence of operations for redirecting a to the standalone editor:  
+The high level sequence of operations for redirecting to the standalone editor:  
 1. Authenticate the agent per your authentication system.
 2. Get Service sid from the list
 5. Generate a one time token
