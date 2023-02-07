@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transcript Viewer Embedded</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/transcript-viewer.css">
+</head>
+<body>
+    <% if (locals.errorMessage) { %>
+    <div class="error-message"><%= errorMessage %></div>
+    <% } %>
+    <div class="container grid-x">
+        <div class="side-menu cell medium-1 large-1">
+            <ul class="vertical menu">
+                <img class="logo" src="/img/logo.png">
+                <li><a href="#">Transcripts <span class="badge alert"><%= locals.recordings.length %></span></a></li>
+                <li><a href="#">Chat</a></li>
+                <li><a href="#">Timesheet</a></li>
+                <li><a href="#">Notes</a></li>
+            </ul>
+        </div>
+
+        <div class="cell medium-3 large-3">
+            <div class="transcript-header"><strong>Transcripts</strong></div>
+            <ul class="transcript-list no-bullet">
+                <% locals.recordings.forEach((r, idx) => { %>
+                <li class="<%= r.sid === locals.activeTranscript ? 'transcript-item-selected' : '' %>">
+                        <a class="transcript-name"
+                        href="/transcript-viewer/embedded?view=<%= r.call_sid %>"
+                        >
+                            Transcript <%= idx + 1 %><br/>
+                            <small><%= r.date_created %></small>
+                        </a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="transcript-viewer-container cell medium-8 large-8">
+            <% if (locals.iframeUrl) { %>
+            <iframe src="<%= iframeUrl %>"></iframe>
+            <% } else { %>
+            <p class="select-transcript-placeholder">Select a transcript to view</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

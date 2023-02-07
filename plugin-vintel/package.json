@@ -1,0 +1,42 @@
+{
+  "name": "plugin-vintel",
+  "version": "1.0.0",
+  "description": "Twilio CLI plugin that provides a higher level interface to Voice Intelligence.",
+  "license": "MIT",
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@twilio/cli-core": "^5.17.0",
+    "form-data": "^3.0.0",
+    "got": "^11.8.1",
+    "ngrok": "^3.4.0",
+    "node-static": "^0.7.11",
+    "restify": "^8.5.1",
+    "wav-file-info": "^0.0.10"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "oclif": {
+    "name": "vintel",
+    "commands": "./src/commands",
+    "bin": "twilio",
+    "repositoryPrefix": "<%- repo %>/blob/<%- version %>/<%- commandPath %>",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "topics": {
+      "vintel": {
+        "description": "Import media into Voice Intelligence"
+      }
+    }
+  },
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "files": [
+    "/src"
+  ]
+}
