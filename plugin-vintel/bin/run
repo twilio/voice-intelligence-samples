@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+const command = require('@oclif/command');
+require('@twilio/cli-core').configureEnv();
+
+command.run()
+  .then(require('@oclif/command/flush'))
+  .catch(require('@oclif/errors/handle'));
