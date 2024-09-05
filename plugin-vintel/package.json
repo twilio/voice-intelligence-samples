@@ -6,12 +6,12 @@
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
-    "@twilio/cli-core": "^5.17.0",
+    "@twilio/cli-core": "^7.19.1",
     "form-data": "^3.0.0",
-    "got": "^11.8.1",
-    "ngrok": "^3.4.0",
+    "got": "^12.6.0",
+    "ngrok": "^4.0.0",
     "node-static": "^0.7.11",
-    "restify": "^8.5.1",
+    "restify": "^10.0.0",
     "wav-file-info": "^0.0.10"
   },
   "engines": {
